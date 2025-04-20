@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "concurrently \"npx prisma generate\"  \"next build\"",
+    "build": "concurrently \"npm run postinstall\"  \"next build\"",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
