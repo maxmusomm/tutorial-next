@@ -2,6 +2,18 @@ import { prisma } from "@/lib/prisma";
 import BlogPostCard from "@/components/general/BlogPostCard";
 import { Suspense } from "react";
 
+interface Posts {
+  id: string;
+  title: string;
+  content: string;
+  imageUrl: string;
+  authorId: string;
+  authorName: string;
+  authorImage: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 async function getData() {
   const data = await prisma.blogPost.findMany({
     select: {
@@ -38,7 +50,7 @@ async function BlogPosts() {
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.map((posts) => (
+        {data.map((posts: Posts) => (
           <BlogPostCard data={posts} key={posts.id} />
         ))}
       </div>
