@@ -5,6 +5,18 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import BlogPostCard from "@/components/general/BlogPostCard";
 
+interface Posts {
+  id: string;
+  title: string;
+  content: string;
+  imageUrl: string;
+  authorId: string;
+  authorName: string;
+  authorImage: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 async function getData(userId: string) {
   const data = await prisma.blogPost.findMany({
     where: {
@@ -31,7 +43,7 @@ const Dashboard = async () => {
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.map((posts) => (
+        {data.map((posts: Posts) => (
           <BlogPostCard key={posts.id} data={posts} />
         ))}
       </div>
