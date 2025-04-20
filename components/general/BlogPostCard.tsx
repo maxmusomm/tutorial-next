@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface IappProps {
   data: {
@@ -18,13 +19,14 @@ interface IappProps {
 const BlogPostCard = ({ data }: IappProps) => {
   return (
     <>
-      <div className="group relative overflow-hidden rounded-lg border border-gray-100 bg-white shadow hover:shadow-md transistion-all hover:shadow-lg">
+      <div className="group relative overflow-hidden rounded-lg border border-gray-100 bg-white shadow  transistion-all ">
         <Link href={`/post/${data.id}`} className="block w-full h-full">
           <div className="relative h-56 w-full overflow-hidden">
-            <img
+            <Image
               src={data.imageUrl}
               alt="Image"
               className="object-cover transition-transform duration-300 group-hover::scale-105"
+              fill
             />
           </div>
 
@@ -39,10 +41,11 @@ const BlogPostCard = ({ data }: IappProps) => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <div className="relative size-8 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     src={data.authorImage}
                     alt={data.authorName}
                     className="object-cover transition-transform duration-300 group-hover::scale-105"
+                    fill
                   />
                 </div>
                 <p className="text-sm">{data.authorName}</p>

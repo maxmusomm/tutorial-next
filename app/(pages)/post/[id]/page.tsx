@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 async function getDate(_id: string) {
   const data = await prisma.blogPost.findUnique({
@@ -36,10 +37,11 @@ const IdPage = async ({ params }: { params: Params }) => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <div className="relative size-10 overflow-hidden rounded-full">
-                <img
+                <Image
                   src={data.authorImage}
                   alt={data.authorName}
                   className="object-cover"
+                  fill
                 />
               </div>
               <p className="font-medium"> {data.authorName}</p>
@@ -55,11 +57,11 @@ const IdPage = async ({ params }: { params: Params }) => {
         </div>
 
         <div className="relative h-[400px] w-full overflow-hidden mb-8 rounded=lg">
-          <img
+          <Image
             src={data.imageUrl}
             alt="Image on the post"
             className="object-cover"
-            width={1000}
+            fill
           />
         </div>
         <Card>

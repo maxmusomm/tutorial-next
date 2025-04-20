@@ -20,6 +20,20 @@ export const handleSubmission = async (formData: FormData) => {
 
   if (!_authorId) {
     throw new Error("User is not authenticated or missing id.");
+  } else if (
+    !_title ||
+    !_content ||
+    !_imageUrl ||
+    !_authorName ||
+    !_authorImage
+  ) {
+    throw new Error("Missing required fields.");
+  }
+
+  if (!_imageUrl.toString().startsWith("https://plus.unsplash.com/")) {
+    throw new Error(
+      "Nigga i told you what image to use. \n Refresh the page \n 👉 http://unsplash.com"
+    );
   }
 
   await prisma.blogPost.create({
