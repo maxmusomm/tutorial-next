@@ -1,5 +1,5 @@
 import { signOut } from "@/auth";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function SignIn() {
   return (
