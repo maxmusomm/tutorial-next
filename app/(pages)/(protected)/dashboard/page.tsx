@@ -19,7 +19,8 @@ async function getData(userId: string) {
 
 const Dashboard = async () => {
   const session = await auth();
-  const data = await getData(session?.user?.id);
+
+  const data = await getData(session?.user?.id as string);
   return (
     <>
       <div className="flex items-center justify-between mb-4">
